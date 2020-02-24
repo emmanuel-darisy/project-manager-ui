@@ -1,0 +1,16 @@
+
+<div class="container">
+ 
+<h1 style="font-size:24px;line-height:18px;margin-bottom:14px;font-weight:bold;">Project Manager</h1>
+
+
+    
+<a routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}" style="line-height:18px;margin-bottom:10px;font-size:23px;color:#2a2a2a;" routerLink="/user" >Add User</a> 
+<a routerLink="/project" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"  style="font-size:23px;margin-left:30px;color:#2a2a2a;">Add Project</a>
+<a  routerLink="/task" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"  style="font-size:23px;margin-left:30px;color:#2a2a2a;">Add Task</a>
+<a routerLink="/viewtask" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"  style="font-size:23px;margin-left:30px;color:#2a2a2a;">View Task</a>
+
+<br>
+<br>
+<router-outlet></router-outlet>
+<div>

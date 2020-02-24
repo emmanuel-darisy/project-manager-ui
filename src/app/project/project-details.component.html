@@ -1,0 +1,38 @@
+<div class="form-group">
+        <ul class="list-group" style="width:60%;margin-top:5px">
+            <li class="list-group-item" *ngFor="let project of projects" >
+    <div class="row" style="width:94%;">
+        <div class="card card-body bg-light col-md-7" style="padding-top:1%;">
+            <div class="row" style="padding-bottom:15px">
+                Project : {{project.projectName}}
+            </div>
+            <div class="row">
+                <div  style="padding-left:0px;font-size:14px;">No of Tasks : {{project.taskCount}}</div>
+                <div  style="font-size:14px;margin-left:50px;">Completed : {{project.completedTasks}}</div>
+            </div>
+            <div class="row">
+                <div  style="padding-left:0px;font-size:14px;">Start Date : {{project.startDate | date:'shortDate'}}</div>
+                <div  style="font-size:14px;margin-left:14px">EndDate : {{project.endDate |date:'shortDate'}}</div>
+            </div>
+        </div> 
+        
+            
+            
+                        
+            
+            <div style="margin-left:10px;" class="card card-body bg-light row-sm-2">
+                {{project.priority}}
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-secondary" style="margin-top:20px;width:110px;line-height:28px; " (click)="updateProject(project)">Update</button>
+                <button type="button" class="btn btn-secondary" style="width:110px;line-height:30px;margin-top:15px;">Suspend</button>
+            </div>
+            
+        
+       
+       
+        
+    </div>    
+            </li>
+        </ul>
+    </div>

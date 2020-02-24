@@ -1,0 +1,54 @@
+<div  style="margin-left:2px;padding-left:0px;">
+    <form #userForm="ngForm" (ngSubmit)="addUser(user)">
+<div class="form-group">
+    
+    <label for="firstName" style="display:inline-block;">First Name :</label>  
+    <input  style="width:45%; height:30px;display:inline-block;margin-left:10px" class="form-control" id="firstName" required [(ngModel)]="user.firstName" name="firstName" type="text" placeholder="First name" #firstName="ngModel"> 
+    <!--<div style="width:20%; height:36px; padding-left:10px;padding:7px;margin-left:90px" [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">First Name is required</div>-->
+</div>
+
+<div class="form-group">
+    <label for="lastName" style="display:inline-block;">Last Name :</label>
+    <input style="width:45%; height:30px; display:inline-block;margin-left:12px" class="form-control" id="lastName" required [(ngModel)]="user.lastName" type="text" name="lastName" placeholder="Last name" #lastName="ngModel">
+<!--<div style="width:20%; height:36px; padding-left:10px;padding:7px;margin-left:90px;" [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">Last Name is required</div>-->
+</div>
+<div class="form-group">
+    
+    <label for="employeeId" style="display:inline-block;">Employee Id :</label>
+    <input style="width:20%; height:30px; display:inline-block;" class="form-control" id="employeeId" required [(ngModel)]="user.employeeId" type="text" name="employeeId" placeholder="Employee ID" #employeeId="ngModel">
+    <!--<div style="width:20%; height:36px; padding-left:10px;padding:7px;margin-left:90px;" [hidden]="employeeId.valid || employeeId.pristine" class="alert alert-danger">Employee Id is required</div>-->
+    
+</div>
+<div class="btn-grp">
+<button type="submit" class="btn btn-secondary" style="width:12%;margin-left:270px" *ngIf="!editEnabled" [disabled]="!userForm.form.valid">Add</button>&nbsp; &nbsp; 
+<button type="button" class="btn btn-secondary" style="width:12%;margin-left:270px" (click)="updateUser(user)" *ngIf="editEnabled">Update</button>
+<button type="button" class="btn btn-secondary" style="width:12%;" (click)="cancelUser(user)" *ngIf="editEnabled">Cancel</button>
+<button type="reset" class="btn btn-secondary"  style="width:12%;" *ngIf="!editEnabled" [disabled]="editEnabled" >Reset</button> 
+    </div>
+    
+    <hr style="margin-top:0.5em;margin-bottom:0.5em;width:55%;margin-right:auto;border-style:dashed;border-width:1px;">
+    <div class ="btn-grp" id="search-component">
+        
+        <input id="searchText" style="width:21%;" autocomplete="off" [(ngModel)]="searchText" name="searchText" placeholder="Search. . ." > &nbsp;   
+        <label for="sort">Sort : </label>
+        <button class="btn btn-secondary" type="button" [class.active]="sortUser==='firstName'" (click)="sortUsers(sortUser='firstName')">First Name</button>
+        <button class="btn btn-secondary" type="button" [class.active]="sortUser==='lastName'" (click)="sortUsers(sortUser='lastName')">Last Name</button>
+        <button class="btn btn-secondary" type="button" style="width:5%;" [class.active]="sortUser==='employeeId'" (click)="sortUsers(sortUser='employeeId')">Id</button>
+
+    </div>
+
+    <div class="form-group">
+            <ul class="list-group" style="width:55%;margin-top:5px">
+                <li  class="list-group-item"  *ngFor="let user of filteredUsers">
+                    <div class="row"><div class="card card-body bg-light col-md-9" style="line-height:0px;margin-bottom:5px;">{{user.firstName}}</div> <button class="btn btn-secondary" style="margin-left:10px;height:38px;width:94px;" type="button" (click)="editUser(user)">Edit</button> </div>
+                    <div class="row"><div class="card card-body bg-light col-md-9" style="line-height:0px;margin-bottom:5px;">{{user.lastName}}</div><button class="btn btn-secondary" type="button" style="width:19%;margin-left:10px;height:38px;" (click)="deleteUser(user)">Delete</button> </div>
+                    <div class="row"><div class="card card-body bg-light col-md-9" style="line-height:0px;margin-bottom:0px;">{{user.employeeId}}</div></div>
+                </li>
+            </ul>
+    </div>
+    
+    <!--<app-user-list [sortUser]="sortUser" [users]="users" (editUserDetail)='editUser($event)'></app-user-list>-->
+    
+  
+</form>
+</div>

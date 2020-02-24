@@ -1,0 +1,18 @@
+<div >
+    <form>
+        <div class="form-group"> 
+                <label for="project">Project : </label>&nbsp;<input type="text" style="margin-left:20px;display:inline-block; width:30%" name="projectId" class="form-control" value="{{project.projectName}}"  readonly>
+                <button name="searchProject" style="margin-left: 8px;border-radius: 20px;" class="btn btn-secondary" type="button" (click)="searchProject()" >Search</button>
+                <label for="sortTasks" style="margin-left:5px;">Sort Task By :</label>
+                <button type="button" [class.active]="sortTask==='startDate'" (click)="sortTask='startDate'" style="margin-left:5px;font-size:13px;width:10%;" class="btn btn-secondary"  name="startDate">Start Date</button>
+                <button type="button" [class.active]="sortTask==='endDate'" (click)="sortTask='endDate'"  style="margin-left:5px;font-size:13px;" class="btn btn-secondary" name="endDate">End Date</button>
+                <button type="button" [class.active]="sortTask==='priority'" (click)="sortTask='priority'" style="margin-left:5px;font-size:13px;width:8%" class="btn btn-secondary" name="priority">Priority</button>
+                <button type="button" style="margin-left:5px;font-size:13px;width:10%;" class="btn btn-secondary" name="completed">Completed</button>
+        </div>
+        <hr style="margin-top:0.5em;margin-bottom:0.5em;margin-left:auto;margin-right:auto;border-style:dashed;border-width:1px;">
+       
+    </form>
+
+<app-task-list [tasks]="tasks" [sortTask]="sortTask"></app-task-list>
+
+</div>

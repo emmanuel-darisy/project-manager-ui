@@ -1,0 +1,15 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header" style="padding-top:0px;height:40px;">
+            Select Any Project<button type="button"  (click)="activeModal.dismiss()">
+                <span>&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <input type="text" name="searchText"[(ngModel)]="searchText" autocomplete="off" placeholder="Search Projects" style="width:100%;border-radius: 12px;">
+            <div class="list-group">   
+                    <button *ngFor ="let project of filteredProjects|filter:searchText" type="button" class="btn btn-sm" (click)="selectProject(project)">{{project.projectName}}</button>
+            </div>
+        </div>
+    </div>
+</div>

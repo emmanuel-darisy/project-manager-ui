@@ -1,0 +1,37 @@
+<div>
+        <div class="row">
+            <div class="col-sm-2">
+                <h4 style="margin-left:2px;">Task</h4>
+            </div>
+            <div class="col-sm-2">
+                <h4 style="margin-left:80px;">Parent</h4>
+            </div>
+            <div class="col-sm-2">
+                <h4 style="margin-left:160px;">Priority</h4>
+            </div>
+            <div class="col-sm-2">
+                <h4 style="margin-left:90px;">Start </h4>
+            </div>
+            <div class="col-sm-2">
+                <h4 style="margin-left:10px;">End </h4>
+            </div>
+        </div>
+    </div>
+<div class="form-group">
+    
+<ul class="list-group">
+        <li class="list-group-item" *ngFor="let task of tasks">
+            <div class="row">
+                <div class="card card-body bg-light col-sm-3" style="margin-left:2px;">{{task.taskName}}</div>
+                <div class="card card-body bg-light col-sm-3" *ngIf="task.parentTask!=undefined" style="margin-left:2px;">{{task.parentTask?.parentTaskName}}</div>
+                <div class="card card-body bg-light col-sm-3" *ngIf="task.parentTask==undefined" style="margin-left:2px;">This task has no parent</div>
+                <div class="col-sm-1">{{task.priority}}</div>
+                <div class="col-sm-1">{{task.startDate | date:'shortDate'}}</div>
+                <div class="col-sm-1" style="margin-left:10px;">{{task.endDate | date:'shortDate'}}</div>
+                <button type="button" class="btn btn-secondary" name="editTask" *ngIf="task.status!='Completed'" [disabled]="task.status==='Completed'" (click)="editTask(task,editEnabled)" style="width:10%;font-size:12px;height:30px;margin-left: 14px;margin-right: 4px;">Edit</button>
+                <button type="button" class="btn btn-secondary" name="viewTask" *ngIf="task.status==='Completed'" (click)="viewTask(task,viewEnabled)" style="width:10%;font-size:12px;height:30px;margin-left: 14px;margin-right: 4px;">View</button>
+                <button type="button" class="btn btn-secondary" name="endTask" [disabled]="task.status==='Completed'" (click)="endTask(task)" style="width:10%;font-size:12px;height:30px;">End Task</button>
+            </div>
+        </li>
+    </ul>
+</div>
